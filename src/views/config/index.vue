@@ -1,10 +1,23 @@
 <template>
-  <div>
-    config
-  </div>
+  <div></div>
 </template>
 <script>
 export default {
-  name: 'ConfigView'
+  name: 'ConfigView',
+  data() {
+    return {
+
+    }
+  },
+  mounted() {
+
+  },
+  methods: {
+
+  }
 }
 </script>
+
+<style lang="scss" scoped>
+
+</style>

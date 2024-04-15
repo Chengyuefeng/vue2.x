@@ -1,3 +1,4 @@
 import setting from './setting'
+import EChartsLoading from './EChartsLoading'
 
-export default { setting }
+export default { setting, EChartsLoading }

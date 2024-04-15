@@ -6,6 +6,7 @@
 
 <script>
 import appApi from '@/api/app'
+import EChartsLoadingMixin from '@/mixin/EChartsLoadingMixin'
 
 export default {
   name: 'HomeView',
@@ -14,16 +15,19 @@ export default {
       homeMsg: ''
     }
   },
+  mixins: [EChartsLoadingMixin],
   mounted() {
-    this.summaryData()
+    
   },
   activated() {
-    
+    this.summaryData()
   },
   methods: {
     async summaryData() {
+      this.loadingShow()
       const { data } = await appApi.summaryData({ shopCode: '1521' })
       // console.log(data)
+      this.loadingHide()
     }
   }
 }
