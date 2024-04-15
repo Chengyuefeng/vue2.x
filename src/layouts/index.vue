@@ -4,7 +4,7 @@
       <layout-header></layout-header>
     </el-header>
     <el-container>
-      <el-aside>
+      <el-aside :style="{ width: menuShowFlag ? '200px' : '60px' }">
         <layout-menu></layout-menu>
       </el-aside>
       <el-main>
@@ -19,6 +19,7 @@
 <script>
 import LayoutMenu from '@/components/layoutMenu'
 import LayoutHeader from '@/components/layoutHeader'
+import { mapState } from 'vuex'
 
 export default {
   name: 'LayoutContainer',
@@ -30,6 +31,9 @@ export default {
     return {
       excludeKeys: []
     }
+  },
+  computed: {
+    ...mapState('setting', ['menuShowFlag'])
   },
   watch: {
     '$router.options.routes': function(val) {
