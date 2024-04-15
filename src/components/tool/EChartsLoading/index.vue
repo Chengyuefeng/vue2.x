@@ -34,19 +34,19 @@ export default {
                   fill: '#5470c6'
                 },
                 keyframeAnimation: {
-                  duration: 1000,
+                  duration: 1500,
                   delay: i * 100,
                   loop: true,
                   keyframes: [
                     {
                       percent: 0.5,
-                      scaleY: 0.3,
-                      easing: 'cubicIn'
+                      scaleY: 0.1,
+                      easing: 'exponentialOut'
                     },
                     {
                       percent: 1,
                       scaleY: 1,
-                      easing: 'cubicOut'
+                      easing: 'exponentialOut'
                     }
                   ]
                 }
