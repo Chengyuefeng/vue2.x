@@ -22,10 +22,12 @@
 
     span{
       min-width: 120px;
-      display: block;
+      line-height: 12px;
+      display: inline-block;
       text-align: left;
       opacity: 0;
       transition: .3s;
+      font-size: 12px;
     }
   }
 
