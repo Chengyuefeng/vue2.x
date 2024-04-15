@@ -27,7 +27,9 @@ export default {
       this.loadingShow()
       const { data } = await appApi.summaryData({ shopCode: '1521' })
       // console.log(data)
-      this.loadingHide()
+      setTimeout(() => {
+        this.loadingHide()
+      }, 1000);
     }
   }
 }

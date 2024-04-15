@@ -1,24 +1,41 @@
 <template>
-  <!-- <el-menu @select="menuSelect">
-    <el-submenu index="1">
-      <template slot="title">
-        <i class="el-icon-location"></i>
-        <span>导航</span>
-      </template>
-      <el-menu-item index="/home">home</el-menu-item>
-      <el-menu-item index="/config">config</el-menu-item>
-    </el-submenu>
-  </el-menu> -->
-  <div class="layout-menu"></div>
+  <div :class="{ 'layout-menu': true, 'show': menuShowFlag }">
+    <div
+      :class="{ 'menu-item': true, 'selected': selectedPath === item.path }"
+      v-for="item in menuListData"
+      :key="item.path"
+      @click="menuSelect(item.path)"
+    >
+      <i :class="item.icon"></i>
+      <span>{{ item.label }}</span>
+    </div>
+  </div>
 </template>
 
 <script>
+import { mapState, mapMutations } from 'vuex';
+
 export default {
   name: 'LayoutMenu',
+  data() {
+    return {
+      
+    }
+  },
+  computed: {
+    ...mapState('menu', ['menuListData', 'selectedPath']),
+    ...mapState('setting', ['menuShowFlag'])
+  },
+  mounted() {
+    this.setSelectedPath(this.$route.path)
+  },
   methods: {
-    menuSelect(index) {
-      if (index !== this.$route.path) {
-        this.$router.push(index)
+    ...mapMutations('menu', ['setSelectedPath']),
+
+    menuSelect(path) {
+      if (path !== this.$route.path) {
+        this.$router.push(path)
+        this.setSelectedPath(path)
       }
     }
   }

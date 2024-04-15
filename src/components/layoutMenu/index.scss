@@ -2,4 +2,44 @@
   background-color: $primary-color;
   width: 100%;
   height: 100%;
+  overflow: hidden;
+
+  .menu-item{
+    width: 100%;
+    height: 60px;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 0 20px;
+    gap: 10px;
+    transition: .3s;
+
+    i {
+      font-size: 20px;
+    }
+
+    span{
+      min-width: 120px;
+      display: block;
+      text-align: left;
+      opacity: 0;
+      transition: .3s;
+    }
+  }
+
+  .menu-item:hover{
+    background-color: #fff;
+    color: $primary-color;
+  }
+
+  .selected{
+    background-color: #fff;
+    color: $primary-color;
+  }
+}
+
+.show .menu-item span{
+  opacity: 1;
 }
