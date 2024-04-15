@@ -31,7 +31,7 @@ export default {
                   height: 40
                 },
                 style: {
-                  fill: '#5470c6'
+                  fill: '#fff'
                 },
                 keyframeAnimation: {
                   duration: 1500,

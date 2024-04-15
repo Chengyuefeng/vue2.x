@@ -1,5 +1,5 @@
 <template>
-  <el-menu @select="menuSelect">
+  <!-- <el-menu @select="menuSelect">
     <el-submenu index="1">
       <template slot="title">
         <i class="el-icon-location"></i>
@@ -8,7 +8,8 @@
       <el-menu-item index="/home">home</el-menu-item>
       <el-menu-item index="/config">config</el-menu-item>
     </el-submenu>
-  </el-menu>
+  </el-menu> -->
+  <div class="layout-menu"></div>
 </template>
 
 <script>

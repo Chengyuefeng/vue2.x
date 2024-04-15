@@ -1,7 +1,9 @@
 .el-aside{
-  height: 100vh;
+  height: calc(100vh - 60px);
 }
 
 .el-header{
-  border-bottom: 1px solid #8b8b8b;
+  background-color: $primary-color;
+  box-shadow: #000 0 0 10px 0px;
+  position: relative;
 }

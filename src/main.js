@@ -13,7 +13,10 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 
 // 引入自定义样式文件
-import '@/style/index.scss'
+import '@/style/index.scss';
+
+// 引入iconfont图标库
+import '@/style/iconfont.css'
 
 Vue.config.productionTip = false
 

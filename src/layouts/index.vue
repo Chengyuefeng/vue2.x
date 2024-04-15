@@ -1,10 +1,12 @@
 <template>
   <el-container>
-    <el-aside>
-      <layout-menu></layout-menu>
-    </el-aside>
+    <el-header>
+      <layout-header></layout-header>
+    </el-header>
     <el-container>
-      <el-header></el-header>
+      <el-aside>
+        <layout-menu></layout-menu>
+      </el-aside>
       <el-main>
         <keep-alive>
           <router-view />
@@ -16,11 +18,13 @@
 
 <script>
 import LayoutMenu from '@/components/layoutMenu'
+import LayoutHeader from '@/components/layoutHeader'
 
 export default {
   name: 'LayoutContainer',
   components: {
-    LayoutMenu
+    LayoutMenu,
+    LayoutHeader
   },
   data() {
     return {
