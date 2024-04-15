@@ -1,10 +1,23 @@
+.app-container{
+  // background-image: url('@/assets/images/Cyberpunk 2077.png');
+  background-color: #DEDDDA;
+}
+
 .el-aside{
-  height: calc(100vh - 60px);
+  height: 100vh;
   transition: .3s;
+  padding-left: 10px;
 }
 
 .el-header{
-  background-color: $primary-color;
-  box-shadow: #000 0 0 10px 0px;
-  position: relative;
+  background-color: $menu-primary-color;
+  width: calc(100% - 20px);
+  // box-shadow: #000 0 0 10px 0px;
+  // position: relative;
+  // top: 10px;
+  // left: 10px;
+  margin-top: 10px;
+  margin-left: 10px;
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
 }

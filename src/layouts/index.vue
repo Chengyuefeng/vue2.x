@@ -1,12 +1,12 @@
 <template>
-  <el-container>
-    <el-header>
-      <layout-header></layout-header>
-    </el-header>
+  <el-container class="app-container">
+    <el-aside :style="{ width: menuShowFlag ? '210px' : '70px' }">
+      <layout-menu></layout-menu>
+    </el-aside>
     <el-container>
-      <el-aside :style="{ width: menuShowFlag ? '200px' : '60px' }">
-        <layout-menu></layout-menu>
-      </el-aside>
+      <el-header>
+        <layout-header></layout-header>
+      </el-header>
       <el-main>
         <keep-alive>
           <router-view />
@@ -36,17 +36,17 @@ export default {
     ...mapState('setting', ['menuShowFlag'])
   },
   watch: {
-    '$router.options.routes': function(val) {
+    '$router.options.routes': function (val) {
       this.excludeKeys = []
       this.loadCacheConfig(val)
-    },
+    }
   },
   created() {
     this.loadCacheConfig(this.$router?.options?.routes)
   },
   methods: {
     loadCacheConfig(routes, pCache = true) {
-      routes.forEach(item => {
+      routes.forEach((item) => {
         const cacheAble = item.meta?.page?.cacheAble ?? pCache ?? true
         if (!cacheAble) {
           this.excludeKeys.push(new RegExp(`${item.path}\\d+$`))

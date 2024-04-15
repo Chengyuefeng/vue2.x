@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-input v-model="homeMsg"></el-input>
+    <!-- <el-input v-model="homeMsg"></el-input> -->
   </div>
 </template>
 
@@ -24,12 +24,12 @@ export default {
   },
   methods: {
     async summaryData() {
-      this.loadingShow()
+      // this.loadingShow()
       const { data } = await appApi.summaryData({ shopCode: '1521' })
       // console.log(data)
-      setTimeout(() => {
-        this.loadingHide()
-      }, 1000);
+      // setTimeout(() => {
+      //   this.loadingHide()
+      // }, 1000);
     }
   }
 }
