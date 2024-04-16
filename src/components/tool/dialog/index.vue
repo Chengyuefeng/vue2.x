@@ -1,9 +1,10 @@
 <template>
   <transition name="loader">
-    <div class="dialog-mask-layer" v-if="show">
+    <div class="dialog-mask-layer" @click="$emit('update:show', false)" v-if="show">
       <div 
         class="dialog-content" 
         :style="{ width }"
+        @click.stop
       >
         <div class="dialog-hide" @click="$emit('update:show', false)">
           <i class="iconfont icon-guanbi"></i>

@@ -1,12 +1,12 @@
 #ECharts {
   width: 100vw;
   height: 100vh;
-  background-color: #ffffff86;
+  background-color: $mask-layer-color;
   position: fixed;
   top: 0;
   left: 0;
   z-index: 1000;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(4px);
   display: flex;
   align-items: center;
   justify-content: center;
