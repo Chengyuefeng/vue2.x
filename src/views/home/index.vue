@@ -6,7 +6,7 @@
 
 <script>
 import appApi from '@/api/app'
-import EChartsLoadingMixin from '@/mixin/EChartsLoadingMixin'
+import CLoadingMixin from '@/mixin/CLoadingMixin'
 
 export default {
   name: 'HomeView',
@@ -15,7 +15,7 @@ export default {
       homeMsg: ''
     }
   },
-  mixins: [EChartsLoadingMixin],
+  mixins: [CLoadingMixin],
   activated() {
     this.summaryData()
   },
@@ -34,4 +34,4 @@ export default {
 
 <style lang="scss" scoped>
 @import './index';
-</style>
+</style>@/mixin/CLoadingMixin

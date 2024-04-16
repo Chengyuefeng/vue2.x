@@ -6,7 +6,8 @@ import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 
 // 引入EChartsLoading弹窗
-import EChartsLoading from '@/components/tool/loading';
+import CLoading from '@/components/tool/loading';
+import CDialog from '@/components/tool/dialog';
 
 // 引入element-ui
 import ElementUI from 'element-ui';
@@ -21,7 +22,8 @@ import '@/style/iconfont.css'
 Vue.config.productionTip = false
 
 Vue.use(ElementUI);
-Vue.component('EChartsLoading', EChartsLoading)
+Vue.component('CLoading', CLoading)
+Vue.component('CDialog', CDialog)
 
 new Vue({
   router,

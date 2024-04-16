@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <router-view/>
-    <EChartsLoading></EChartsLoading>
+    <CLoading></CLoading>
   </div>
 </template>
 
