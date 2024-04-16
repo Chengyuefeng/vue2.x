@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 4508488 */
-  src: url('//at.alicdn.com/t/c/font_4508488_jl0r6rnwhlk.woff2?t=1713172048932') format('woff2'),
-       url('//at.alicdn.com/t/c/font_4508488_jl0r6rnwhlk.woff?t=1713172048932') format('woff'),
-       url('//at.alicdn.com/t/c/font_4508488_jl0r6rnwhlk.ttf?t=1713172048932') format('truetype');
+  src: url('//at.alicdn.com/t/c/font_4508488_h7m3ikdputv.woff2?t=1713234701761') format('woff2'),
+       url('//at.alicdn.com/t/c/font_4508488_h7m3ikdputv.woff?t=1713234701761') format('woff'),
+       url('//at.alicdn.com/t/c/font_4508488_h7m3ikdputv.ttf?t=1713234701761') format('truetype');
 }
 
 .iconfont {
@@ -11,6 +11,10 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-search:before {
+  content: "\e893";
 }
 
 .icon-home:before {

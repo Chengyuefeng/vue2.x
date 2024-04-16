@@ -6,7 +6,7 @@ import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 
 // 引入EChartsLoading弹窗
-import EChartsLoading from '@/components/tool/EChartsLoading';
+import EChartsLoading from '@/components/tool/loading';
 
 // 引入element-ui
 import ElementUI from 'element-ui';
