@@ -1,11 +1,15 @@
 <template>
-  <div id="ECharts" v-show="showFlag"></div>
+  <transition name="loader">
+    <div id="ECharts" v-if="showFlag">
+      <div class="loader"></div>
+    </div>
+  </transition>
 </template>
 
 <script>
 import * as ECharts from 'echarts'
 import { mapState } from 'vuex'
-import { debounce } from '@/utils/throttle'
+// import { debounce } from '@/utils/throttle'
 
 // 创建EChart
 let EChart = null
@@ -61,10 +65,10 @@ export default {
     ...mapState('EChartsLoading', ['showFlag'])
   },
   mounted() {
-    this.EChartsInit()
-    window.addEventListener('resize', debounce(() => {
-      EChart.resize()
-    }, 100))
+    // this.EChartsInit()
+    // window.addEventListener('resize', debounce(() => {
+    //   EChart.resize()
+    // }, 100))
   },
   methods: {
     EChartsInit() {

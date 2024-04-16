@@ -16,20 +16,17 @@ export default {
     }
   },
   mixins: [EChartsLoadingMixin],
-  mounted() {
-    
-  },
   activated() {
     this.summaryData()
   },
   methods: {
     async summaryData() {
-      // this.loadingShow()
+      this.loadingShow()
       const { data } = await appApi.summaryData({ shopCode: '1521' })
-      // console.log(data)
-      // setTimeout(() => {
-      //   this.loadingHide()
-      // }, 1000);
+      console.log(data)
+      setTimeout(() => {
+        this.loadingHide()
+      }, 1000);
     }
   }
 }
