@@ -27,7 +27,7 @@
         <i class="iconfont icon-download"></i>
       </div>
     </div>
-    <div class="user-info">
+    <div class="user-info" v-if="userInfo">
       <img :src="require('@/assets/images/' + userInfo.avatar)" alt="">
       <span>{{ userInfo.username }}</span>
     </div>
@@ -50,6 +50,7 @@
 import { mapMutations, mapState } from 'vuex'
 import PinyinMatch from 'pinyin-match'
 import DownLoad from './downLoad.vue'
+import storage from 'store'
 
 export default {
   name: 'LayoutHeader',
@@ -61,13 +62,16 @@ export default {
       searchMenuFlag: false,
       searchMenuList: [],
       searchMenuKeywords: '',
-      downLoadFlag: false
+      downLoadFlag: false,
+      userInfo: null
     }
   },
   computed: {
     ...mapState('setting', ['menuShowFlag']),
-    ...mapState('menu', ['menuListData']),
-    ...mapState('login', ['userInfo'])
+    ...mapState('menu', ['menuListData'])
+  },
+  created() {
+    this.userInfo = storage.get('userInfo')
   },
   mounted() {
     window.addEventListener('click', () => {
