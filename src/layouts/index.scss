@@ -1,5 +1,6 @@
 .app-container{
-  // background-image: url('@/assets/images/Cyberpunk 2077.png');
+  // background-image: url('https://lh3.googleusercontent.com/ci/AL18g_T2ScI6C90HYU3Xzs34IwyFHkawsgOXhAd9Et-gqmx1WbvbEBXeG5wrlpxwA67PN7rpWWYbqJY=w3420-h1672-pp-rw-v1');
+  // background-size: auto 100%;
   background-color: $container-background-color;
 }
 
@@ -24,4 +25,13 @@
 
 .loader-login-enter, .loader-login-leave-to {
   opacity: 0;
+}
+
+.el-main{
+  // margin: 10px;
+  padding: 10px;
+  // background-color: $menu-primary-color;
+  border-radius: 6px;
+  box-sizing: border-box;
+  // backdrop-filter: blur(10px);
 }

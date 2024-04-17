@@ -1,6 +1,7 @@
 <template>
-  <div>
-    <!-- <el-input v-model="homeMsg"></el-input> -->
+  <div class="home-page">
+    <div class="card-item"></div>
+    <div class="card-item"></div>
   </div>
 </template>
 
@@ -34,4 +35,4 @@ export default {
 
 <style lang="scss" scoped>
 @import './index';
-</style>@/mixin/CLoadingMixin
+</style>

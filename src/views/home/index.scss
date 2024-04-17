@@ -1,4 +1,13 @@
-div {
-  font-size: 20px;
-  color: red;
+.home-page{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.card-item {
+  width: 30%;
+  height: 200px;
+  background-color: #5d5d5d;
+  border-radius: 6px;
+  // box-shadow: 0 0 6px 2px #d5d5d5;
 }

@@ -33,7 +33,7 @@
 
   .search-selected {
     width: 200px;
-    background-color: #fff;
+    background-color: $selected-primary-color;
     color: $primary-color;
 
     input {
@@ -42,12 +42,12 @@
   }
 
   .icon-item:hover {
-    background-color: #fff;
+    background-color: $selected-primary-color;
     color: $primary-color;
   }
 
   .icon-item-selected {
-    background-color: #fff;
+    background-color: $selected-primary-color;
     color: $primary-color;
   }
 
@@ -60,6 +60,7 @@
     position: absolute;
     top: 70px;
     left: 50px;
+    z-index: 20000;
     color: #fff;
     transition: .3s;
     overflow: hidden;

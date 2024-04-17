@@ -53,12 +53,12 @@
   }
 
   .menu-item:hover{
-    background-color: #fff;
+    background-color: $selected-primary-color;
     color: $primary-color;
   }
 
   .selected{
-    background-color: #fff;
+    background-color: $selected-primary-color;
     color: $primary-color;
   }
 }
