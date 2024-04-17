@@ -1,29 +1,35 @@
 <template>
   <div class="layout-header">
-    <div 
-      :class="{ 'icon-item': true, 'icon-item-selected': menuShowFlag }" 
-      @click="setMenuShow"
-    >
-      <i class="iconfont icon-menu"></i>
+    <div class="header-tool">
+      <div 
+        :class="{ 'icon-item': true, 'icon-item-selected': menuShowFlag }" 
+        @click="setMenuShow"
+      >
+        <i class="iconfont icon-menu"></i>
+      </div>
+      <div 
+        :class="{ 'icon-item': true, 'search-selected': searchMenuFlag }" 
+        @click.stop="searchMenu"
+      >
+        <i class="iconfont icon-search"></i>
+        <input
+          type="text"
+          class="search-menu-input"
+          ref="search-menu-input"
+          v-model="searchMenuKeywords"
+          @input="searchMenuInput"
+        />
+      </div>
+      <div 
+        class="icon-item"
+        @click="downLoadFlag = true"
+      >
+        <i class="iconfont icon-download"></i>
+      </div>
     </div>
-    <div 
-      :class="{ 'icon-item': true, 'search-selected': searchMenuFlag }" 
-      @click.stop="searchMenu"
-    >
-      <i class="iconfont icon-search"></i>
-      <input
-        type="text"
-        class="search-menu-input"
-        ref="search-menu-input"
-        v-model="searchMenuKeywords"
-        @input="searchMenuInput"
-      />
-    </div>
-    <div 
-      class="icon-item"
-      @click="downLoadFlag = true"
-    >
-      <i class="iconfont icon-download"></i>
+    <div class="user-info">
+      <img :src="require('@/assets/images/' + userInfo.avatar)" alt="">
+      <span>{{ userInfo.username }}</span>
     </div>
     <div 
       :class="{ 'menu-list': true, 'menu-list-selected': searchMenuFlag }"
@@ -60,7 +66,8 @@ export default {
   },
   computed: {
     ...mapState('setting', ['menuShowFlag']),
-    ...mapState('menu', ['menuListData'])
+    ...mapState('menu', ['menuListData']),
+    ...mapState('login', ['userInfo'])
   },
   mounted() {
     window.addEventListener('click', () => {

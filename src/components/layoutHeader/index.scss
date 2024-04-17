@@ -5,7 +5,7 @@
   position: relative;
   display: flex;
   align-items: center;
-  gap: 10px;
+  justify-content: space-between;
 
   i {
     font-size: 20px;
@@ -78,5 +78,28 @@
 
   .menu-list-selected {
     height: 300px;
+  }
+
+  .user-info {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+
+    img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 10px;
+    }
+
+    span {
+      font-weight: bold;
+    }
+  }
+
+  .header-tool{
+    display: flex;
+    gap: 10px;
   }
 }

@@ -1,0 +1,129 @@
+.layout-admin-background {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10000;
+}
+
+.mask-layer {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 20000;
+  padding: 10% 0;
+  background-color: rgba(0, 0, 0, .2);
+  backdrop-filter: blur(12px);
+  display: flex;
+  justify-content: center;
+
+  .info-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .avatar {
+      width: 170px;
+      height: 170px;
+      overflow: hidden;
+      background-color: #ffffff;
+      border-radius: 50%;
+      position: relative;
+      margin-bottom: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+
+      i{
+        font-size: 80px;
+        color: #5d5d5d;
+      }
+    }
+
+    .login-input {
+      width: 320px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      padding: 0 12px;
+      box-sizing: border-box;
+      background-color: rgba(0, 0, 0, .6);
+      border: 2px solid #fff;
+      margin-bottom: 16px;
+      border-radius: 6px;
+      position: relative;
+
+      input {
+        border: none;
+        background-color: transparent;
+        outline: none;
+        width: 100%;
+        color: #ffffff;
+        font-weight: bold;
+        font-size: 15px;
+        letter-spacing: 1px;
+      }
+
+      /* Firefox 18- */
+      ::-moz-placeholder {
+        color: #ffffff;
+        opacity: 1; /* Firefox lower versions have a default opacity for placeholder, so reset it */
+      }
+
+      /* Internet Explorer 10-11 */
+      :-ms-input-placeholder {
+        color: #ffffff;
+      }
+
+      /* Microsoft Edge */
+      ::-ms-input-placeholder {
+        color: #ffffff;
+      }
+
+      /* Standard way */
+      ::placeholder {
+        color: #ffffff;
+      }
+
+      .input-error-msg {
+        position: absolute;
+        top: 42px;
+        left: 0;
+        color: red;
+        font-size: 12px;
+      }
+
+      i {
+        font-weight: bold;
+        color: #ffffff;
+        cursor: pointer;
+      }
+    }
+
+    .input-error{
+      border: 2px solid red;
+    }
+  }
+}
+
+.loader-avatar-enter-active, .loader-avatar-leave-active {
+  transition: opacity 0.3s;
+}
+
+.loader-avatar-enter, .loader-avatar-leave-to {
+  opacity: 0;
+}
+

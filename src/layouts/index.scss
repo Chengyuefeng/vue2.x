@@ -17,3 +17,11 @@
   border-radius: 6px;
   backdrop-filter: blur(10px);
 }
+
+.loader-login-enter-active, .loader-login-leave-active {
+  transition: opacity 0.3s;
+}
+
+.loader-login-enter, .loader-login-leave-to {
+  opacity: 0;
+}
