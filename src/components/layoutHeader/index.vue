@@ -78,7 +78,9 @@ export default {
       this.$nextTick(() => {
         this.searchMenuKeywords = ''
         this.searchMenuFlag = false
-        this.$refs['search-menu-input'].blur()
+        if (this.$refs['search-menu-input']) {
+          this.$refs['search-menu-input'].blur()
+        }
       })
     })
   },

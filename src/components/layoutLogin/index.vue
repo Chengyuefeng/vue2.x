@@ -256,9 +256,7 @@ export default {
 
     usernameBlur() {
       const { username } = this
-      this.findAvatarImage(username).then(res => {
-        console.log('找到头像', res)
-      })
+      this.findAvatarImage(username)
     },
 
     EChartsInit() {

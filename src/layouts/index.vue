@@ -2,7 +2,7 @@
   <transition name="loader-login">
     <el-container class="app-container" v-if="hasLogged">
       <el-aside :style="{ width: menuShowFlag ? '210px' : '70px' }">
-        <layout-menu></layout-menu>
+        <layout-menu @logout="logout"></layout-menu>
       </el-aside>
       <el-container>
         <el-header>
@@ -23,7 +23,7 @@
 import LayoutMenu from '@/components/layoutMenu'
 import LayoutHeader from '@/components/layoutHeader'
 import LayoutLogin from '@/components/layoutLogin'
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 import storage from 'store'
 
 export default {
@@ -55,6 +55,17 @@ export default {
     }
   },
   methods: {
+    ...mapActions('login', ['stareLogout']),
+
+    logout() {
+      this.stareLogout().then(() => {
+        this.hasLogged = false
+        if (this.$router.path === '/home') {
+          this.$router.replace('/home')
+        }
+      })
+    },
+
     reloadAdmin() {
       this.hasLogged = true
     },

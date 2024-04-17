@@ -4,6 +4,7 @@ const routes  = [
     path: '/',
     name: 'layouts',
     component: () => import('@/layouts'),
+    redirect: 'home',
     children: [
       {
         path: 'home',

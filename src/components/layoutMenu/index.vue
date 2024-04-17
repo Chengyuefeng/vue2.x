@@ -1,13 +1,18 @@
 <template>
   <div :class="{ 'layout-menu': true, 'show': menuShowFlag }">
-    <div
-      :class="{ 'menu-item': true, 'selected': selectedPath === item.path }"
-      v-for="item in menuListData"
-      :key="item.path"
-      @click="menuSelect(item.path)"
-    >
-      <i :class="item.icon"></i>
-      <span>{{ item.label }}</span>
+    <div class="menu-content">
+      <div
+        :class="{ 'menu-item': true, 'selected': selectedPath === item.path }"
+        v-for="item in menuListData"
+        :key="item.path"
+        @click="menuSelect(item.path)"
+      >
+        <i :class="item.icon"></i>
+        <span>{{ item.label }}</span>
+      </div>
+    </div>
+    <div class="logout" @click="logout">
+      <i class="iconfont icon-tuichu"></i>
     </div>
   </div>
 </template>
@@ -31,6 +36,10 @@ export default {
   },
   methods: {
     ...mapMutations('menu', ['setSelectedPath']),
+
+    logout() {
+      this.$emit('logout')
+    },
 
     menuSelect(path) {
       if (path !== this.$route.path) {

@@ -47,6 +47,14 @@ export default {
           resolve(false)
         }
       })
+    },
+    // 退出登录
+    stareLogout({ dispatch, commit }) {
+      return new Promise((resolve, reject) => {
+        commit('setAvatarImagePath', '')
+        storage.clearAll()
+        resolve()
+      })
     }
   }
 }
