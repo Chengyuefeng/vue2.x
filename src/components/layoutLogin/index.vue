@@ -228,9 +228,17 @@ export default {
   },
   mounted() {
     this.EChartsInit()
-    window.addEventListener('resize', debounce(() => {
+    this.reECharts = debounce(() => {
       EChart.resize()
-    }, 10))
+    }, 10)
+    window.addEventListener('resize', this.reECharts)
+  },
+  beforeDestroy() {
+    EChart.dispose()
+    EChart = null
+    if (this.reECharts) {
+      window.removeEventListener('resize', this.reECharts)
+    }
   },
   methods: {
     ...mapActions('login', ['findAvatarImage', 'storeSubmitAdmin']),

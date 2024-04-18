@@ -28,10 +28,11 @@
 }
 
 .el-main{
-  // margin: 10px;
-  padding: 10px;
-  // background-color: $menu-primary-color;
+  margin: 10px;
+  padding: 0;
+  // background-color: #eaeaeacd;
   border-radius: 6px;
   box-sizing: border-box;
+  overflow: hidden;
   // backdrop-filter: blur(10px);
 }

@@ -1,13 +1,12 @@
 .home-page{
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+  width: 100%;
+  height: calc(100vh - 90px);
+  position: relative;
 }
 
-.card-item {
-  width: 30%;
-  height: 200px;
-  background-color: #ffffff;
-  border-radius: 6px;
-  box-shadow: 0 0 6px 2px #d5d5d5;
+#pata-tap{
+  inset: 0px;
+  display: block;
+  position: absolute;
+  background-color: rgb(181, 181, 181);
 }
