@@ -52,11 +52,11 @@ export default {
       canvas = document.getElementById("pata-tap")
       if (canvas.getContext) {
         ctx = canvas.getContext("2d")
-        ctx.fillStyle = "rgb(200, 0 ,0)";
-        ctx.fillRect(10, 10, 550, 55);
+        
+        ctx.fillRect(25, 25, 100, 100);
+        ctx.clearRect(45, 45, 60, 60);
+        ctx.strokeRect(50, 50, 50, 50);
 
-        ctx.fillStyle = "rgba(0, 0, 200, 0.5)";
-        ctx.fillRect(30, 30, 55, 55);
         // drawing code here
       } else {
         // canvas-unsupported code here
@@ -64,14 +64,14 @@ export default {
       
     },
 
-    async summaryData() {
-      this.loadingShow()
-      const { data } = await appApi.summaryData({ shopCode: '1521' })
-      console.log(data)
-      setTimeout(() => {
-        this.loadingHide()
-      }, 1000)
-    }
+    // async summaryData() {
+    //   this.loadingShow()
+    //   const { data } = await appApi.summaryData({ shopCode: '1521' })
+    //   console.log(data)
+    //   setTimeout(() => {
+    //     this.loadingHide()
+    //   }, 1000)
+    // }
   }
 }
 </script>
