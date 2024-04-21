@@ -1,12 +1,30 @@
-.home-page{
+.home-page {
   width: 100%;
   height: calc(100vh - 90px);
   position: relative;
 }
 
-#pata-tap{
+#pata-tap {
   inset: 0px;
   display: block;
+  background-color: rgb(217, 82, 31);
+}
+
+.pata-tap-btn {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
   position: absolute;
-  background-color: rgb(181, 181, 181);
+  top: 0;
+  left: 0;
+
+  .btn-item {
+    width: 12.5%;
+    height: 33.33%;
+  }
+
+  .key-selected {
+    background-color: rgba(0, 0, 0, .1);
+  }
 }
