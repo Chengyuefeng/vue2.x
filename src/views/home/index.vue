@@ -4,8 +4,8 @@
       current stock price: $3.15 +0.15
     </canvas>
     <div class="pata-tap-btn">
-      <div 
-        v-for="(item, key) in keys" 
+      <div
+        v-for="(item, key) in keys"
         :key="key"
         :class="{ 'btn-item': true, 'key-selected': keySelected === key }"
         @mousedown="keyMousedown(key)"
@@ -22,7 +22,6 @@ import keys from './keys'
 
 // 创建canvas
 let canvas = null
-let ctx = null
 
 export default {
   name: 'HomeView',
@@ -66,6 +65,7 @@ export default {
   },
   beforeDestroy() {
     window.removeEventListener('resize', this.reCanvas)
+    window.removeEventListener('keydown', this.pataTapKey)
   },
   methods: {
     keyMousedown(key) {
@@ -76,51 +76,13 @@ export default {
     },
 
     pataTapKey(e) {
-      console.log(e)
+      if (this.keys[e.key] && this.keys[e.key].canvasDraw) {
+        this.keys[e.key].canvasDraw(canvas)
+      }
     },
 
     canvasInit() {
-      canvas = document.getElementById("pata-tap")
-      if (canvas.getContext) {
-        ctx = canvas.getContext("2d")
-
-        // drawing code here
-      } else {
-        // canvas-unsupported code here
-      }
-    },
-
-    drawStar(ctx, r) {
-      ctx.save();
-      ctx.beginPath();
-      ctx.moveTo(r, 0);
-      for (var i = 0; i < 9; i++) {
-        ctx.rotate(Math.PI / 5);
-        if (i % 2 == 0) {
-          ctx.lineTo((r / 0.525731) * 0.200811, 0);
-        } else {
-          ctx.lineTo(r, 0);
-        }
-      }
-      ctx.closePath();
-      ctx.fill();
-      ctx.restore();
-    },
-
-    draw() {
-      ctx.clearRect(0, 0, this.pataTapWidth, this.pataTapHeight);
-      ctx.setLineDash([20, 4]);
-      ctx.lineDashOffset = -this.offset;
-      ctx.strokeRect(10, 10, 100, 100);
-    },
-
-    march() {
-      this.offset ++;
-      if (this.offset > 100) {
-        this.offset = 0;
-      }
-      this.draw();
-      setTimeout(this.march, 33);
+      canvas = document.getElementById('pata-tap').getContext('2d')
     }
 
     // async summaryData() {
