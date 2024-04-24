@@ -9,7 +9,9 @@
         :key="key"
         :class="{ 'btn-item': true, 'key-selected': keySelected === key }"
         @mousedown="keyMousedown(key)"
-      ></div>
+      >
+        <audio v-if="item.audio" :src="item.audio" :ref="'audio' + key"></audio>
+      </div>
     </div>
   </div>
 </template>
@@ -71,6 +73,12 @@ export default {
     keyMousedown(key) {
       this.keySelected = key
       this.pataTapKey({ key })
+
+      if (this.keys[key] && this.keys[key].audio) {
+        const audio = this.$refs['audio' + key][0]
+        audio.currentTime = 0
+        audio.play()
+      }
       setTimeout(() => {
         this.keySelected = null
       }, 100)
@@ -79,6 +87,12 @@ export default {
     pataTapKey(e) {
       if (this.keys[e.key] && this.keys[e.key].canvasDraw) {
         this.keys[e.key].canvasDraw(canvas)
+      }
+
+      if (this.keys[e.key] && this.keys[e.key].audio) {
+        const audio = this.$refs['audio' + e.key][0]
+        audio.currentTime = 0
+        audio.play()
       }
     },
 
