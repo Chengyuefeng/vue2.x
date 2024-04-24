@@ -70,6 +70,7 @@ export default {
   methods: {
     keyMousedown(key) {
       this.keySelected = key
+      this.pataTapKey({ key })
       setTimeout(() => {
         this.keySelected = null
       }, 100)
