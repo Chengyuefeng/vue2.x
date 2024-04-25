@@ -33,7 +33,8 @@ export default {
       pataTapHeight: 0,
       keys: keys(this),
       keySelected: null,
-      offset: 0
+      offset: 0,
+      ctrlOrCmdPressed: false
     }
   },
   computed: {
@@ -64,12 +65,20 @@ export default {
 
     // 绑定键盘事件
     window.addEventListener('keydown', this.pataTapKey)
+    window.addEventListener('keyup', this.handleKeyUp)
   },
   beforeDestroy() {
     window.removeEventListener('resize', this.reCanvas)
     window.removeEventListener('keydown', this.pataTapKey)
+    window.removeEventListener('keyup', this.handleKeyUp)
   },
   methods: {
+    handleKeyUp(e) {
+      if (e.key === 'Control' || e.key === 'Meta') {
+        this.ctrlOrCmdPressed = false
+      }
+    },
+
     keyMousedown(key) {
       this.keySelected = key
       this.pataTapKey({ key })
@@ -85,6 +94,15 @@ export default {
     },
 
     pataTapKey(e) {
+      if (this.ctrlOrCmdPressed) {
+        // 如果 Ctrl 或 Command 键被按下，直接返回，不继续执行
+        return
+      }
+
+      if (e.key === 'Control' || e.key === 'Meta') {
+        this.ctrlOrCmdPressed = true
+      }
+
       if (this.keys[e.key] && this.keys[e.key].canvasDraw) {
         this.keys[e.key].canvasDraw(canvas)
       }
