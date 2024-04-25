@@ -1,6 +1,72 @@
 export default (ctx) => ({
   q: {
     audio: require('@/assets/musics/clay.mp3'),
+    canvasDraw(canvas) {
+      const circleX = ctx.pataTapWidth / 2
+      const circleY = ctx.pataTapHeight / 2
+      const R = ctx.pataTapHeight / 3
+      const fillColor = ['rgba(255, 74, 63, 0.6)', 'rgba(255, 74, 63, 0.2)', 'rgba(255, 74, 63, 0.8)', 'rgba(255, 74, 63, 0.4)', 'rgba(255, 74, 63, 1)']
+      let step = 0
+      let translate = 0
+      let globalAlpha = 1
+      let rotate = Math.ceil(Math.random() * 360)
+
+      canvas.save();
+      // 移动坐标系统到半圆的中心
+      canvas.translate(circleX, circleY);
+      // 旋转90度
+      canvas.rotate(rotate * Math.PI / 180);
+      // 回到半圆的中心左边的位置
+      canvas.translate(-circleX, -circleY);
+
+      const time = setInterval(() => {
+        if (step < fillColor.length) {
+          canvas.clearRect(0, 0, ctx.pataTapWidth, ctx.pataTapHeight)
+
+          canvas.beginPath()
+          canvas.fillStyle = fillColor[Math.floor(step)]
+          canvas.arc(circleX, circleY, R, 0, Math.PI * 2)
+          canvas.fill()
+
+          step += .2
+        } else if (step < 20) {
+          step += .5
+          canvas.clearRect(0, 0, ctx.pataTapWidth, ctx.pataTapHeight)
+          canvas.beginPath()
+          canvas.fillStyle = fillColor.at(-1)
+          canvas.arc(circleX, circleY, R, 0, Math.PI * 2)
+          canvas.fill()
+
+        } else if (step < 40) {
+          step ++
+          translate += 7
+          globalAlpha -= .06
+
+          canvas.globalAlpha = globalAlpha
+
+          canvas.clearRect(0, 0, ctx.pataTapWidth, ctx.pataTapHeight)
+
+          canvas.save();
+          canvas.beginPath()
+          canvas.fillStyle = fillColor.at(-1)
+          canvas.translate(0, translate)
+          canvas.arc(circleX, circleY, R, 0, Math.PI)
+          canvas.fill()
+          canvas.restore();
+
+          canvas.save();
+          canvas.beginPath()
+          canvas.translate(0, -translate)
+          canvas.arc(circleX, circleY, R, 0, Math.PI, true)
+          canvas.fill()
+          canvas.restore();
+        } else {
+          canvas.restore();
+          clearInterval(time)
+          canvas.clearRect(0, 0, ctx.pataTapWidth, ctx.pataTapHeight)
+        }
+      }, 10)
+    }
   },
   w: {
     audio: require('@/assets/musics/confetti.mp3'),
