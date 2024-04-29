@@ -22,10 +22,11 @@
         </div>
         <div :class="{ 'login-input': true, 'input-error': passwordError }">
           <input 
-            type="password" 
+            :type="inputType" 
             placeholder="登录密码" 
             v-model="password"
           />
+          <i class="iconfont icon-yanjing_yincang" @mousedown="inputType = 'text'" @mouseup="inputType = 'password'"></i>
           <i class="iconfont icon-you" @click="submitAdmin"></i>
           <transition name="loader-avatar">
             <div class="input-error-msg" v-if="passwordErrorMsg">{{ passwordErrorMsg }}</div>
@@ -220,7 +221,8 @@ export default {
       passwordError: false,
       passwordErrorMsg: '',
       usernameError: false,
-      usernameErrorMsg: ''
+      usernameErrorMsg: '',
+      inputType: 'password'
     }
   },
   computed: {
