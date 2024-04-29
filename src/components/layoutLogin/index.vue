@@ -258,6 +258,8 @@ export default {
           if (res) {
             this.$emit('reloadAdmin')
           }
+        }).catch(err => {
+          this.$message.error(err)
         })
       }
     },

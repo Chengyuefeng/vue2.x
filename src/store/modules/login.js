@@ -36,6 +36,7 @@ export default {
         }
       })
     },
+
     // 登录系统
     storeSubmitAdmin({ dispatch, commit, state }, userInfo) {
       return new Promise((resolve, reject) => {
@@ -44,10 +45,11 @@ export default {
           storage.set('userInfo', item)
           resolve(true)
         } else {
-          resolve(false)
+          reject('账号或密码错误')
         }
       })
     },
+
     // 退出登录
     stareLogout({ dispatch, commit }) {
       return new Promise((resolve, reject) => {
