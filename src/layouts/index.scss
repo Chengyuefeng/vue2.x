@@ -17,6 +17,8 @@
   margin-left: 10px;
   border-radius: 6px;
   backdrop-filter: blur(10px);
+  position: relative;
+  z-index: 1;
 }
 
 .loader-login-enter-active, .loader-login-leave-active {
