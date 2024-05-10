@@ -57,7 +57,7 @@ export default {
     window.addEventListener('keyup', this.handleKeyUp)
   },
   beforeDestroy() {
-    this.resizeObserver.disconnect()
+    this.resizeObserver().disconnect()
     window.removeEventListener('keydown', this.pataTapKey)
     window.removeEventListener('keyup', this.handleKeyUp)
   },
