@@ -22,7 +22,9 @@
           type="text"
           ref="search-menu-input"
           v-model="searchMenuKeywords"
-          @input="searchMenuInput"
+          @input.stop="searchMenuInput"
+          @focus="setMenuSearch(true)"
+          @blur="setMenuSearch(false)"
         />
       </div>
       <div class="item" v-for="item in searchMenuList" :key="item.path" @click="pathTo(item.path)">
@@ -71,7 +73,7 @@ export default {
     })
   },
   methods: {
-    ...mapMutations('setting', ['setMenuShow']),
+    ...mapMutations('setting', ['setMenuShow', 'setMenuSearch']),
     ...mapMutations('menu', ['setSelectedPath']),
 
     pathTo(path) {

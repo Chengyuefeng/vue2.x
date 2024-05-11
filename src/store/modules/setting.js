@@ -2,7 +2,8 @@ export default {
   namespaced: true,
   state: () => ({
     mobileFlag: false,
-    menuShowFlag: false
+    menuShowFlag: false,
+    menuSearchFlag: false
   }),
   mutations: {
     setMobile(state, flag) {
@@ -10,6 +11,9 @@ export default {
     },
     setMenuShow(state) {
       state.menuShowFlag = !state.menuShowFlag
+    },
+    setMenuSearch(state, flag) {
+      state.menuSearchFlag = flag
     }
   }
 }

@@ -38,7 +38,7 @@ export default {
     }
   },
   computed: {
-    ...mapState('setting', ['mobileFlag'])
+    ...mapState('setting', ['mobileFlag', 'menuSearchFlag'])
   },
   mixins: [CLoadingMixin],
   activated() {
@@ -98,7 +98,7 @@ export default {
     },
 
     pataTapKey(e) {
-      if (this.ctrlOrCmdPressed) {
+      if (this.ctrlOrCmdPressed || this.menuSearchFlag) {
         // 如果 Ctrl 或 Command 键被按下，直接返回，不继续执行
         return
       }
