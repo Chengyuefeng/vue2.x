@@ -3,7 +3,7 @@ import storage from 'store'
 export default {
   namespaced: true,
   state: () => ({
-    avatarImagePath: '',
+    avatarImagePath: 'xiaobai.jpeg',
     userListData: [
       {
         username: 'xiaobai',

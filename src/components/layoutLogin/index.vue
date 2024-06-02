@@ -220,8 +220,8 @@ export default {
   name: 'LayoutAdmin',
   data() {
     return {
-      username: '',
-      password: '',
+      username: 'xiaobai',
+      password: 'xiaobai666',
       passwordError: false,
       passwordErrorMsg: '',
       usernameError: false,
