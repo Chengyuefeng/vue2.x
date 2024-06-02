@@ -99,10 +99,7 @@ export default (ctx) => ({
     }
   },
   e: {
-    audio: require('@/assets/musics/corona.mp3')
-  },
-  r: {
-    audio: require('@/assets/musics/bubbles.mp3'),
+    audio: require('@/assets/musics/corona.mp3'),
     canvasDraw(canvas) {
       let type = Math.ceil(Math.random() * 10) % 2 ? 'toLeft' : 'toRight'
       let width = 0
@@ -131,6 +128,9 @@ export default (ctx) => ({
         }
       }, 1)
     }
+  },
+  r: {
+    audio: require('@/assets/musics/bubbles.mp3')
   },
   t: {
     audio: require('@/assets/musics/dotted-spiral.mp3')

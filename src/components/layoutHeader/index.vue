@@ -1,45 +1,33 @@
 <template>
   <div class="layout-header">
     <div class="header-tool">
-      <div 
-        :class="{ 'icon-item': true, 'icon-item-selected': menuShowFlag }" 
-        @click="setMenuShow"
-      >
+      <div :class="{ 'icon-item': true, 'icon-item-selected': menuShowFlag }" @click="setMenuShow">
         <i class="iconfont icon-menu"></i>
       </div>
-      <div 
-        :class="{ 'icon-item': true, 'search-selected': searchMenuFlag }" 
-        @click.stop="searchMenu"
-      >
-        <i class="iconfont icon-search"></i>
-        <input
-          type="text"
-          class="search-menu-input"
-          ref="search-menu-input"
-          v-model="searchMenuKeywords"
-          @input="searchMenuInput"
-        />
-      </div>
-      <div 
-        class="icon-item"
-        @click="downLoadFlag = true"
-      >
+      <div class="icon-item" @click="downLoadFlag = true">
         <i class="iconfont icon-download"></i>
+      </div>
+      <div :class="{ 'icon-item': true }" @click.stop="searchMenu">
+        <i class="iconfont icon-search"></i>
       </div>
     </div>
     <div class="user-info" v-if="userInfo">
-      <img :src="require('@/assets/images/' + userInfo.avatar)" alt="">
+      <img :src="require('@/assets/images/' + userInfo.avatar)" alt="" />
       <span>{{ userInfo.username }}</span>
     </div>
-    <div 
-      :class="{ 'menu-list': true, 'menu-list-selected': searchMenuFlag }"
-      @click.stop
-    >
-      <div 
-        v-for="item in searchMenuList" 
-        :key="item.path" 
-        @click="pathTo(item.path)
-      ">
+    <div :class="{ 'menu-list': true, 'menu-list-selected': searchMenuFlag }" @click.stop>
+      <div class="search-menu">
+        <i class="iconfont icon-search"></i>
+        <input
+          type="text"
+          ref="search-menu-input"
+          v-model="searchMenuKeywords"
+          @input.stop="searchMenuInput"
+          @focus="setMenuSearch(true)"
+          @blur="setMenuSearch(false)"
+        />
+      </div>
+      <div class="item" v-for="item in searchMenuList" :key="item.path" @click="pathTo(item.path)">
         {{ item.label }}
       </div>
     </div>
@@ -85,7 +73,7 @@ export default {
     })
   },
   methods: {
-    ...mapMutations('setting', ['setMenuShow']),
+    ...mapMutations('setting', ['setMenuShow', 'setMenuSearch']),
     ...mapMutations('menu', ['setSelectedPath']),
 
     pathTo(path) {
@@ -107,7 +95,10 @@ export default {
 
     searchMenuInput() {
       const { searchMenuKeywords } = this
-      this.searchMenuList = this.menuListData.filter((e) => e.label.indexOf(searchMenuKeywords) > -1 || PinyinMatch.match(e.label, searchMenuKeywords))
+      this.searchMenuList = this.menuListData.filter(
+        (e) =>
+          e.label.indexOf(searchMenuKeywords) > -1 || PinyinMatch.match(e.label, searchMenuKeywords)
+      )
     }
   }
 }

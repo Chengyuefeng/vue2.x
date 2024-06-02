@@ -38,41 +38,45 @@ export default {
     }
   },
   computed: {
-    ...mapState('setting', ['mobileFlag'])
+    ...mapState('setting', ['mobileFlag', 'menuSearchFlag'])
   },
   mixins: [CLoadingMixin],
   activated() {
-    // this.summaryData()
+    this.summaryData()
   },
   mounted() {
-    // 初始化canvas尺寸
-    if (this.$refs['home-page']) {
-      this.pataTapWidth = this.$refs['home-page'].offsetWidth
-      this.pataTapHeight = this.$refs['home-page'].offsetHeight
-    }
-
-    // 监听窗口尺寸变化重载canvas
-    this.reCanvas = () => {
-      this.pataTapWidth = this.$refs['home-page'].offsetWidth
-      this.pataTapHeight = this.$refs['home-page'].offsetHeight
-    }
-    window.addEventListener('resize', this.reCanvas)
-
     // 创建canvas
     this.$nextTick(() => {
+      // 监听画布盒子尺寸变化
+      this.resizeObserver().observe(this.$refs['home-page'])
+      // 画布初始化
       this.canvasInit()
     })
-
     // 绑定键盘事件
     window.addEventListener('keydown', this.pataTapKey)
     window.addEventListener('keyup', this.handleKeyUp)
   },
   beforeDestroy() {
-    window.removeEventListener('resize', this.reCanvas)
+    this.resizeObserver().disconnect()
     window.removeEventListener('keydown', this.pataTapKey)
     window.removeEventListener('keyup', this.handleKeyUp)
   },
   methods: {
+    resizeObserver() {
+      return new ResizeObserver((entries) => {
+        for (let entry of entries) {
+          const { width, height } = entry.contentRect
+          this.reloadCanvas(width, height)
+        }
+      })
+    },
+
+    // 监听窗口尺寸变化重载canvas
+    reloadCanvas(width, height) {
+      this.pataTapWidth = width
+      this.pataTapHeight = height
+    },
+
     handleKeyUp(e) {
       if (e.key === 'Control' || e.key === 'Meta') {
         this.ctrlOrCmdPressed = false
@@ -94,7 +98,7 @@ export default {
     },
 
     pataTapKey(e) {
-      if (this.ctrlOrCmdPressed) {
+      if (this.ctrlOrCmdPressed || this.menuSearchFlag) {
         // 如果 Ctrl 或 Command 键被按下，直接返回，不继续执行
         return
       }
@@ -116,16 +120,15 @@ export default {
 
     canvasInit() {
       canvas = document.getElementById('pata-tap').getContext('2d')
-    }
+    },
 
-    // async summaryData() {
-    //   this.loadingShow()
-    //   const { data } = await appApi.summaryData({ shopCode: '1521' })
-    //   console.log(data)
-    //   setTimeout(() => {
-    //     this.loadingHide()
-    //   }, 1000)
-    // }
+    async summaryData() {
+      this.loadingShow()
+      const { data } = await appApi.summaryData({ shopCode: '1521' })
+      setTimeout(() => {
+        this.loadingHide()
+      }, 1000)
+    }
   }
 }
 </script>
