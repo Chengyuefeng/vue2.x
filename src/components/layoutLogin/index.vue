@@ -9,29 +9,33 @@
             <i v-else class="iconfont icon-user"></i>
           </transition>
         </div>
-        <div :class="{ 'login-input': true, 'input-error': usernameError }">
-          <input
-            type="text" 
-            placeholder="登录名" 
-            v-model="username"
-            @blur="usernameBlur"
-          />
-          <transition name="loader-avatar">
-            <div class="input-error-msg" v-if="usernameErrorMsg">{{ usernameErrorMsg }}</div>
-          </transition>
-        </div>
-        <div :class="{ 'login-input': true, 'input-error': passwordError }">
-          <input 
-            :type="inputType" 
-            placeholder="登录密码" 
-            v-model="password"
-          />
-          <i class="iconfont icon-yanjing_yincang" @mousedown="inputType = 'text'" @mouseup="inputType = 'password'"></i>
-          <i class="iconfont icon-you" @click="submitAdmin"></i>
-          <transition name="loader-avatar">
-            <div class="input-error-msg" v-if="passwordErrorMsg">{{ passwordErrorMsg }}</div>
-          </transition>
-        </div>
+        <form action="">
+          <div :class="{ 'login-input': true, 'input-error': usernameError }">
+            <input
+              type="text" 
+              placeholder="登录名" 
+              name="username"
+              v-model="username"
+              @blur="usernameBlur"
+            />
+            <transition name="loader-avatar">
+              <div class="input-error-msg" v-if="usernameErrorMsg">{{ usernameErrorMsg }}</div>
+            </transition>
+          </div>
+          <div :class="{ 'login-input': true, 'input-error': passwordError }">
+            <input 
+              :type="inputType" 
+              placeholder="登录密码" 
+              name="password"
+              v-model="password"
+            />
+            <i class="iconfont icon-yanjing_yincang" @mousedown="inputType = 'text'" @mouseup="inputType = 'password'"></i>
+            <i class="iconfont icon-you" @click="submitAdmin"></i>
+            <transition name="loader-avatar">
+              <div class="input-error-msg" v-if="passwordErrorMsg">{{ passwordErrorMsg }}</div>
+            </transition>
+          </div>
+        </form>
       </div>
     </div>
   </div>
