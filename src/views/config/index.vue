@@ -1,7 +1,12 @@
 <template>
-  <div></div>
+  <div class="config-page" ref="mountRef">
+
+  </div>
 </template>
+
 <script>
+import { threeScene } from './modules/church'
+
 export default {
   name: 'ConfigView',
   data() {
@@ -10,7 +15,9 @@ export default {
     }
   },
   mounted() {
-
+    this.$nextTick(() => {
+      threeScene(this.$refs.mountRef)
+    })
   },
   methods: {
 
@@ -19,5 +26,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+@import './index.scss';
 </style>
