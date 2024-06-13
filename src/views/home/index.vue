@@ -11,6 +11,7 @@
         @mousedown="keyMousedown(key)"
       >
         <audio v-if="item.audio" :src="item.audio" :ref="'audio' + key"></audio>
+        <span>{{ key.toUpperCase() }}</span>
       </div>
     </div>
   </div>
@@ -42,7 +43,8 @@ export default {
   },
   mixins: [CLoadingMixin],
   activated() {
-    this.summaryData()
+    // this.summaryData()
+    this.$message.info('请输入键盘字母或点击屏幕上的方格')
   },
   mounted() {
     // 创建canvas
@@ -98,6 +100,7 @@ export default {
     },
 
     pataTapKey(e) {
+      e = { ...e, key: e.key.toLowerCase() }
       if (this.ctrlOrCmdPressed || this.menuSearchFlag) {
         // 如果 Ctrl 或 Command 键被按下，直接返回，不继续执行
         return
@@ -106,7 +109,7 @@ export default {
       if (e.key === 'Control' || e.key === 'Meta') {
         this.ctrlOrCmdPressed = true
       }
-
+      this.keySelected = e.key
       if (this.keys[e.key] && this.keys[e.key].canvasDraw) {
         this.keys[e.key].canvasDraw(canvas)
       }
@@ -116,6 +119,9 @@ export default {
         audio.currentTime = 0
         audio.play()
       }
+      setTimeout(() => {
+        this.keySelected = null
+      }, 100)
     },
 
     canvasInit() {

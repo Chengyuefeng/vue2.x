@@ -2,7 +2,10 @@ import * as THREE from 'three'
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js'
 import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js'
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js'
-import { SMAAPass } from 'three/examples/jsm/postprocessing/SMAAPass.js';
+import { SMAAPass } from 'three/examples/jsm/postprocessing/SMAAPass.js'
+
+import store from '@/store'
+
 
 // 场景
 const scene = new THREE.Scene()
@@ -60,8 +63,11 @@ loader.load('/3DModel/church.glb', function (gltf) {
     renderer.clear()
     renderer.render(scene, camera)
   }
+  store.commit('EChartsLoading/loadingHide')
 },
-undefined,
+() => { 
+  store.commit('EChartsLoading/loadingShow')
+},
 function (error) {
   console.error(error)
 })
@@ -93,5 +99,6 @@ function onPointerUp(event) {
 }
 
 export function threeScene(mountRef) {
+  renderer.setSize(mountRef.offsetWidth, mountRef.offsetHeight);
   mountRef.appendChild(renderer.domElement)
 }
